@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MoviePlus</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="Ratings">
+        <item>PG</item>
+        <item>PG-13</item>
+        <item>R</item>
+    </string-array>
+</resources>
