@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Movie from RPC/SQL/OMDB </string>
+    <string name="action_settings">Settings</string>
+    <string-array name="Ratings">
+        <item>PG</item>
+        <item>PG-13</item>
+        <item>R</item>
+    </string-array>
+    <string name="videourl">http://10.0.2.2:8888/</string>
+</resources>

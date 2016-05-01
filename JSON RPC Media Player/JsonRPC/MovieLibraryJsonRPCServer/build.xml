@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<project name="JsonRPC in Java for Media/Movies" default="targets">
+   <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+   <property name="lib.dir" value="lib"/>
+   <property name="media.dir" value="MediaFiles"/>
+   <property name="port.num.rpc" value="8080"/>
+   <property name="port.num.streamer" value="8888"/>
+   <property environment="env"/>
+   <property name="ostype" value="${env.OSTYPE}"/>
+
+   <target name="targets">
+      <echo message="Targets are execute.server, execute.streamer, and targets (default)"/>
+      <echo message="base directory is: ${basedir}"/>
+      <echo message="base directory is: ${basedir}"/>
+      <echo message="invoke jsonrpc server with: java -jar lib/jsonrpcserver.jar ${port.num.rpc}"/>
+      <echo message="invoke media streamer with: java -jar lib/tools.jar -port ${port.num.streamer} -dir ${media.dir} -trees -verbose"/>
+   </target>
+
+   <target name="execute.server"
+           description="execute the jsonRPC server for movie information">
+      <echo message="java -jar lib/jsonrpcserver.jar ${port.num.rpc}"/>
+      <java jar="${lib.dir}/jsonrpcserver.jar"
+            fork="yes">
+         <arg value="${port.num.rpc}"/>
+      </java>
+   </target>
+   
+   <target name="execute.streamer"
+           description="execute the simple http server for streaming media files">
+      <echo message="java -jar lib/tools.jar -port ${port.num.streamer} -dir ${media.dir} -trees -verbose"/>
+      <java jar="${lib.dir}/tools.jar" fork="true">
+         <arg value="-port"/>
+         <arg value="${port.num.streamer}"/>
+         <arg value="-dir"/>
+         <arg value="${media.dir}"/>
+         <arg value="-trees"/>
+         <arg value="-verbose"/>
+       </java>
+   </target>
+   
+</project>
